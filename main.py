@@ -26,7 +26,7 @@ def wielomian_wspolczynniki():
     for i in range(0, stopien + 1):
         n.append(input("Podaj współczynnik a" + str(i) + ": "))
         print("to jest a dla x" + str(i) + ": " + str(n))
-    return n
+    return n, stopien
 
 
 def rysuj_wielomian(x1, x2, n, stopien):
