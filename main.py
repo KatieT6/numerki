@@ -7,20 +7,22 @@ from email.policy import default
 import matplotlib as plt
 import numpy as np
 import matplotlib.pyplot as plt
+import horner
+import bisekcja
 
 print("1. Wielomianowa")
 print("2. Trygonometryczna")
 print("3. Wykladnicza")
 
 
-def przedzial_poszukiwania():
+def rage():
     print("Okresl przedział: ")
     x1 = float(input("Wprowadź początek przedziału: "))
     x2 = float(input("Wprowadź koniec przedziału: "))
     return x1, x2
 
 
-def wielomian_wspolczynniki():
+def polynomial_coefficient():
     stopien = int(input("Wprowadz stopien wielomianu"))
     n = []
     for i in range(0, stopien + 1):
@@ -29,14 +31,11 @@ def wielomian_wspolczynniki():
     return n, stopien
 
 
-def rysuj_wielomian(x1, x2, n, stopien):
+def print_polynomial(x1, x2, n, stopien):
     x = np.linspace(x1, x2)
     fx = []
     for i in range(len(x)):
-        fx.append(n[stopien]*x[i]**stopien)
-
-
-# def horner():
+        fx.append(n[stopien] * x[i] ** stopien)
 
 
 user_input = int(input("Wybierz jedna z funkcji: "))
@@ -44,13 +43,14 @@ user_input = int(input("Wybierz jedna z funkcji: "))
 match user_input:
     case 1:
         print("Wielomianowa")
-        x1, x2 = przedzial_poszukiwania()
-        wspolczynniki = wielomian_wspolczynniki()
+        x1, x2 = rage()
+        coefficient = polynomial_coefficient()
+        bisekcja.bisect_method_accuracy()
 
     case 2:
         print("Trygonometryczna")
-        x1, x2 = przedzial_poszukiwania()
+        x1, x2 = rage()
 
     case 3:
         print("Wykladnicza")
-        x1, x2 = przedzial_poszukiwania()
+        x1, x2 = rage()
