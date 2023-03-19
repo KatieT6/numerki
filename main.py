@@ -51,8 +51,10 @@ def print_function(choice, a, b, xy_b, xy_s):
 
     plt.xticks([i for i in range(int(a), int(b), 2)])
     plt.yticks([i for i in range(-10, 10, 2)])
-
     plt.grid()
+    plt.xlim(a, b)
+    plt.ylim(-10, 10)
+
     plt.autoscale(enable=True)
 
     plt.plot(x, fx)
@@ -139,7 +141,7 @@ match user_input:
     case 3:
         print("Wykladnicza")
         type_of_func = int(input("Wybierz rodzaj: \n 3. y = 2^x-3 \n 4. y = 3^(2*x)-6\n"))
-        print_function(type_of_func, -6, 1, 0, 0)
+        print_function(type_of_func, -10, 4, 0, 0)
         x1, x2 = _range_(type_of_func, 0, 0)
         xyb, xys = root_method(type_of_func, x1, x2, 0, 0)
         print_function(type_of_func, x1, x2, xyb, xys)

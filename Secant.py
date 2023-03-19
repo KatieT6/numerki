@@ -8,7 +8,7 @@ def secant_method_iteration(choice, x0, x1, iteration, coeff, stopien):
     #     f = eval(func)
     #     return f
 
-    for i in range(1, iteration):
+    for i in range(0, iteration):
 
         if 4 >= choice >= 1:
             fx0 = value_of_functions.one_value(choice, x0)
