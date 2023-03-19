@@ -28,8 +28,8 @@ def print_poly(coeff, stopien, a, b, xy_b, xy_s):
     plt.xlabel("oś X")
     plt.ylabel("oś Y")
 
-    plt.xticks([i for i in range(-20, 20, 5)])
-    plt.yticks([i for i in range(-20, 20, 5)])
+    plt.xticks([i for i in range(int(a), int(b), 2)])
+    plt.yticks([i for i in range(-10, 10, 2)])
     plt.grid()
     plt.xlim(a, b)
     plt.ylim(-10, 10)
@@ -48,7 +48,10 @@ def print_function(choice, a, b, xy_b, xy_s):
 
     plt.xlabel("oś X")
     plt.ylabel("oś Y")
-    plt.xticks()
+
+    plt.xticks([i for i in range(int(a), int(b), 2)])
+    plt.yticks([i for i in range(-10, 10, 2)])
+
     plt.grid()
     plt.autoscale(enable=True)
 
