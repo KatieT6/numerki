@@ -12,7 +12,6 @@ import horner
 import bisection
 import value_of_Functions
 import Polynomial
-import Secant
 
 #
 print("1. Wielomianowa")
