@@ -13,11 +13,6 @@ import value_of_functions
 import polynomial
 import secant
 
-#
-print("1. Wielomianowa")
-print("2. Trygonometryczna")
-print("3. Wykladnicza")
-
 
 def print_poly(coeff, stopien, a, b, xy_b, xy_s):
     # p = np.poly1d(coeff)
@@ -117,6 +112,10 @@ def _range_(func_type, coeff, n):
         elif value_of_functions.one_value(func_type, x1) * value_of_functions.one_value(func_type, x2) > 0:
             return _range_(func_type, coeff, n)
 
+print("1. Wielomianowa")
+print("2. Trygonometryczna")
+print("3. Wykladnicza")
+print("4. Złożenie")
 
 user_input = int(input("Wybierz jedna z funkcji: "))
 

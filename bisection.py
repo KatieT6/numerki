@@ -5,7 +5,7 @@ import value_of_functions
 
 
 def change_value_type_based(func, a, b, coeff, x0):
-    if 1 <= func <= 4:
+    if 1 <= func <= 6:
         funcx0 = value_of_functions.one_value(func, x0)
         funcA = value_of_functions.one_value(func, a)
         funcB = value_of_functions.one_value(func, b)

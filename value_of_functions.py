@@ -25,6 +25,7 @@ def one_value(choice, x):
     if choice == 4:
         return (3 ** (2 * x)) - 6
 
+
 # def one_value(choice, x):
 #     def f(x):
 #         f = eval(functions[choice - 1])
