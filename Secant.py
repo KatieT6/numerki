@@ -35,7 +35,7 @@ def secant_method_iteration(choice, x0, x1, iteration, coeff, stopien):
     elif choice == 0:
         fxi = horner.horner_scheme(coeff, stopien, xi)
 
-    return xi, fxi
+    return [xi, fxi]
 
 
 def secant_method_accuracy(choice, x0, x1, acc, coeff, stopien):

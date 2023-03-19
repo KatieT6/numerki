@@ -19,7 +19,7 @@ print("2. Trygonometryczna")
 print("3. Wykladnicza")
 
 
-def print_poly(coeff, stopien, a, b, xyb, xys):
+def print_poly(coeff, stopien, a, b, xy_b, xy_s):
     # p = np.poly1d(coeff)
     # print(p)
     x = np.arange(a, b, 0.01)
@@ -31,13 +31,18 @@ def print_poly(coeff, stopien, a, b, xyb, xys):
     plt.xticks([i for i in range(-20, 20, 5)])
     plt.yticks([i for i in range(-20, 20, 5)])
     plt.grid()
-    plt.xlim(-20, 20)
-    plt.ylim(-10, 20)
+    plt.xlim(a, b)
+    plt.ylim(-10, 10)
+
     plt.plot(x, fx)
+    if xy_b != 0 and xy_s != 0:
+        plt.scatter([xy_b[0]], [xy_b[1]], color="red", marker="D", zorder=2)
+        plt.scatter([xy_s[0]], [xy_s[1]], color="green", marker="D", zorder=3)
+
     plt.show()
 
 
-def print_function(choice, a, b, xyb, xys):
+def print_function(choice, a, b, xy_b, xy_s):
     x = np.arange(a, b, 0.01)
     fx = value_of_functions.values_of_func(choice, x)
 
@@ -48,6 +53,9 @@ def print_function(choice, a, b, xyb, xys):
     plt.autoscale(enable=True)
 
     plt.plot(x, fx)
+    if xy_b != 0 and xy_s != 0:
+        plt.scatter([xy_b[0]], [xy_b[1]], color="red", marker="D", zorder=2)
+        plt.scatter([xy_s[0]], [xy_s[1]], color="green", marker="D", zorder=3)
 
     plt.show()
 
@@ -75,14 +83,13 @@ def root_method(func_choice, a, b, coefficient, st):
             iterations = int(input("Podaj liczbe iteracji: \n"))
             # metoda bisekcji
             print("\nBisekcja: ")
-            print(bisection.bisect_method_iteration(func_choice, iterations, a, b, coefficient))
-
+            xy_b = bisection.bisect_method_iteration(func_choice, iterations, a, b, coefficient)
+            print(xy_b)
             # metoda siecznych
             print("\nSiecznych: ")
-            print(secant.secant_method_iteration(func_choice, a, b, iterations, coefficient, st))
+            xy_s = secant.secant_method_iteration(func_choice, a, b, iterations, coefficient, st)
+            print(xy_s)
 
-            xy_b = bisection.bisect_method_accuracy(func_choice, iterations, a, b, coefficient)
-            xy_s = secant.secant_method_accuracy(func_choice, a, b, iterations, coefficient, st)
             return xy_b, xy_s
 
 
@@ -99,10 +106,10 @@ def _range_(func_type, coeff, n):
             return _range_(func_type, coeff, n)
 
     elif func_type != 0:
-        if value_of_Functions.one_value(func_type, x1) * value_of_Functions.one_value(func_type, x2) < 0:
+        if value_of_functions.one_value(func_type, x1) * value_of_functions.one_value(func_type, x2) < 0:
             return x1, x2
 
-        elif value_of_Functions.one_value(func_type, x1) * value_of_Functions.one_value(func_type, x2) > 0:
+        elif value_of_functions.one_value(func_type, x1) * value_of_functions.one_value(func_type, x2) > 0:
             return _range_(func_type, coeff, n)
 
 
