@@ -8,6 +8,8 @@ from email.policy import default
 import numpy as np
 import matplotlib.pyplot as plt
 from numpy.polynomial import Polynomial
+
+import Secant
 import horner
 import bisection
 import value_of_Functions
@@ -66,7 +68,7 @@ def print_function(choice):
 
 def zero_point_method(func_choice, a, b):
     print(" a) spełnienie warunku nałożonego na dokładność \n b) osiągnięcie zadanej liczby iteracji")
-    choose_method = int(input("Wybierz wybiera kryterium zatrzymania algorytmu:"))
+    choose_method = input("Wybierz kryterium zatrzymania algorytmu:")
     match choose_method:
         case "a":
             epsilon = float(input("Podaj dokladnosc:"))
