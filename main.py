@@ -144,5 +144,14 @@ match user_input:
         x1, x2 = _range_(type_of_func, 0, 0)
         xyb, xys = root_method(type_of_func, x1, x2, 0, 0)
         print_function(type_of_func, x1, x2, xyb, xys)
+
+    case 4:
+        print("Złożenie")
+        type_of_func = int(input("Wybierz rodzaj: \n 5. y = cos(x) * 2^x  \n 6. y = sin(x-2)*x^2-3x\n"))
+        print_function(type_of_func, -10, 5, 0, 0)
+        x1, x2 = _range_(type_of_func, 0, 0)
+        xyb, xys = root_method(type_of_func, x1, x2, 0, 0)
+        print_function(type_of_func, x1, x2, xyb, xys)
+
     case _:
         print("Wybierz z pośród podanych opcji!")

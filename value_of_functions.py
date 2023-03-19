@@ -25,6 +25,11 @@ def one_value(choice, x):
     if choice == 4:
         return (3 ** (2 * x)) - 6
 
+    if choice == 5:
+        return np.cos(x) * 2 ** x
+    if choice == 6:
+        return np.sin(x - 2) * x ** 2 - 3 * x
+
 
 # def one_value(choice, x):
 #     def f(x):
