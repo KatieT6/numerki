@@ -1,5 +1,7 @@
+import numpy as np
+
 import horner
-import value_of_Functions
+import value_of_functions
 
 
 def change_value_type_based(func, a, b, coeff, x0):
@@ -17,7 +19,7 @@ def change_value_type_based(func, a, b, coeff, x0):
 
 
 def bisect_method_iteration(func, iteration, a, b, coeff):
-    x0 = 0.5
+    x0 = 0
     for i in range(iteration):
         x0 = (a + b) / 2
         funcx0, funcA, funcB = change_value_type_based(func, a, b, coeff, x0)
@@ -27,18 +29,33 @@ def bisect_method_iteration(func, iteration, a, b, coeff):
         elif funcx0 * funcA < 0:
             b = x0
 
-    return x0
+    return [x0, funcx0]
 
+
+# def bisect_method_accuracy(func, acc, a, b, coeff):
+#     x0 = (a + b) / 2
+#     funcx0, funcA, funcB = change_value_type_based(func, a, b, coeff, x0)
+#     print(f"Bisekcja x0 {x0} fx: {funcx0}")
+#     if np.abs(funcx0) <= acc:
+#         return [x0, funcx0]
+#     elif funcx0 * funcB < 0:
+#         a = x0
+#         bisect_method_accuracy(func, acc, a, b, coeff)
+#     elif funcx0 * funcA < 0:
+#         b = x0
+#         bisect_method_accuracy(func, acc, a, b, coeff)
 
 def bisect_method_accuracy(func, acc, a, b, coeff):
     x0 = (a + b) / 2
     funcx0, funcA, funcB = change_value_type_based(func, a, b, coeff, x0)
+    while np.abs(funcx0) > acc:
+        x0 = (a + b) / 2
+        funcx0, funcA, funcB = change_value_type_based(func, a, b, coeff, x0)
+        print(f"Bisekcja x0 {x0} fx: {funcx0}")
+        if funcx0 * funcB < 0:
+            a = x0
 
-    if funcx0 < acc:
-        return x0
-    if funcx0 * funcB < 0:
-        a = x0
-        bisect_method_accuracy(func, acc, a, b, coeff)
-    elif funcx0 * funcA < 0:
-        b = x0
-        bisect_method_accuracy(func, acc, a, b, coeff)
+        elif funcx0 * funcA < 0:
+            b = x0
+
+    return [x0, funcx0]

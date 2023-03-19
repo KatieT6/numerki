@@ -7,5 +7,5 @@ def horner_scheme(wsp, st, x):
     return wynik
 
 #wsp od najwyższego do najniższego
-if __name__ == "__main__":
-    print(horner_scheme([1, 2, 3], 2, 5))
+# if __name__ == "__main__":
+#     print(horner_scheme([1, 2, 3], 2, 5))

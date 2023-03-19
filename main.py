@@ -7,14 +7,11 @@ from email.policy import default
 
 import numpy as np
 import matplotlib.pyplot as plt
-from numpy.polynomial import Polynomial
-
-import Secant
 import horner
 import bisection
-import value_of_Functions
-import Polynomial
-import Secant
+import value_of_functions
+import polynomial
+import secant
 
 #
 print("1. Wielomianowa")
@@ -22,11 +19,11 @@ print("2. Trygonometryczna")
 print("3. Wykladnicza")
 
 
-def print_poly(coeff, stopien):
+def print_poly(coeff, stopien, a, b, xyb, xys):
     # p = np.poly1d(coeff)
     # print(p)
-    x = np.arange(-20, 20, 0.01)
-    fx = value_of_Functions.value_of_poly(coeff, x, stopien)
+    x = np.arange(a, b, 0.01)
+    fx = value_of_functions.value_of_poly(coeff, x, stopien)
 
     plt.xlabel("oś X")
     plt.ylabel("oś Y")
@@ -40,63 +37,59 @@ def print_poly(coeff, stopien):
     plt.show()
 
 
-# funkcja do obliczania wartości wybranej funkcji dla danego x
-
-
-
-def print_function(choice):
-    x = np.arange(-20, 20, 0.01)
-    fx = value_of_Functions.values_of_func(choice, x)
+def print_function(choice, a, b, xyb, xys):
+    x = np.arange(a, b, 0.01)
+    fx = value_of_functions.values_of_func(choice, x)
 
     plt.xlabel("oś X")
     plt.ylabel("oś Y")
-
-    # plt.xticks([i for i in range(-20, 20, 5)])
-    # plt.yticks([i for i in range(-20, 20, 5)])
-
     plt.xticks()
-
     plt.grid()
-
     plt.autoscale(enable=True)
 
-    # plt.xlim(-20, 20)
-    # plt.ylim(-10, 20)
     plt.plot(x, fx)
 
     plt.show()
 
 
-def zero_point_method(func_choice, a, b):
+def root_method(func_choice, a, b, coefficient, st):
     print(" a) spełnienie warunku nałożonego na dokładność \n b) osiągnięcie zadanej liczby iteracji")
     choose_method = input("Wybierz kryterium zatrzymania algorytmu:")
+
     match choose_method:
         case "a":
-            epsilon = float(input("Podaj dokladnosc:"))
+            epsilon = float(input("Podaj dokladnosc: \n"))
             # metoda bisekcji
-            print("Bisekcja: ")
-            print(bisection.bisect_method_accuracy(func_choice, epsilon, a, b, coefficient))
+            print("\nBisekcja: ")
+            xy_b = bisection.bisect_method_accuracy(func_choice, epsilon, a, b, coefficient)
+            print(xy_b)
 
             # metoda siecznych
             print("\nSiecznych: ")
-            print(Secant.secant_method_accuracy(func_choice, a, b, epsilon, coefficient, st))
+            xy_s = secant.secant_method_accuracy(func_choice, a, b, epsilon, coefficient, st)
+            print(xy_s)
 
+            return xy_b, xy_s
 
         case "b":
-            iterations = int(input("Podaj liczbe iteracji:"))
+            iterations = int(input("Podaj liczbe iteracji: \n"))
             # metoda bisekcji
-            print("Bisekcja: ")
+            print("\nBisekcja: ")
             print(bisection.bisect_method_iteration(func_choice, iterations, a, b, coefficient))
 
             # metoda siecznych
             print("\nSiecznych: ")
-            print(Secant.secant_method_iteration(func_choice, a, b, iterations, coefficient, st))
+            print(secant.secant_method_iteration(func_choice, a, b, iterations, coefficient, st))
+
+            xy_b = bisection.bisect_method_accuracy(func_choice, iterations, a, b, coefficient)
+            xy_s = secant.secant_method_accuracy(func_choice, a, b, iterations, coefficient, st)
+            return xy_b, xy_s
 
 
 def _range_(func_type, coeff, n):
-    print("Okresl przedział: ")
-    x1 = float(input("Wprowadź początek przedziału: "))
-    x2 = float(input("Wprowadź koniec przedziału: "))
+    print("Okresl przedział [a, b]: ")
+    x1 = float(input("Wprowadź początek przedziału, a: "))
+    x2 = float(input("Wprowadź koniec przedziału, b: "))
 
     if func_type == 0:
         if horner.horner_scheme(coeff, n, x1) * horner.horner_scheme(coeff, n, x2) < 0:
@@ -118,22 +111,27 @@ user_input = int(input("Wybierz jedna z funkcji: "))
 match user_input:
     case 1:
         print("Wielomianowa")
-        coefficient, st = Polynomial.polynomial_coefficients()
-        Polynomial.polynomial_to_string(coefficient, st)
-        print_poly(coefficient, st)
+        coefficient, st = polynomial.polynomial_coefficients()
+        print_poly(coefficient, st, -20, 20, 0, 0)
         x1, x2 = _range_(0, coefficient, st)
-        zero_point_method(0, x1, x2)
+        xyb, xys = root_method(0, x1, x2, coefficient, st)
+        print(f"Bisekcja: {xyb}\nSiecznych: {xys}")
+        print_poly(coefficient, st, x1, x2, xyb, xys)
 
     case 2:
         print("Trygonometryczna")
-        type_of_func = int(input("Wybierz rodzaj: \n 1. y = -3*sin(2*x-1) \n 2. y = cos(2*x-sin(-x))"))
-        print_function(type_of_func)
+        type_of_func = int(input("Wybierz rodzaj: \n 1. y = -3*sin(2*x-1) \n 2. y = cos(2*x-sin(-x))\n"))
+        print_function(type_of_func, -20, 20, 0, 0)
         x1, x2 = _range_(type_of_func, 0, 0)
+        xyb, xys = root_method(type_of_func, x1, x2, 0, 0)
+        print_function(type_of_func, x1, x2, xyb, xys)
 
     case 3:
         print("Wykladnicza")
-        type_of_func = int(input("Wybierz rodzaj: \n 3. y = 5^x-3 \n 4. y = 3^(2*x)-3"))
-        print_function(type_of_func)
+        type_of_func = int(input("Wybierz rodzaj: \n 3. y = 2^x-3 \n 4. y = 3^(2*x)-6\n"))
+        print_function(type_of_func, -6, 1, 0, 0)
         x1, x2 = _range_(type_of_func, 0, 0)
+        xyb, xys = root_method(type_of_func, x1, x2, 0, 0)
+        print_function(type_of_func, x1, x2, xyb, xys)
     case _:
         print("Wybierz z pośród podanych opcji!")

@@ -12,25 +12,25 @@ def value_of_poly(coeff, x, stopien):
     return f
 
 
-# def one_value(choice, x):
-#     if choice == 1:
-#         return (-3) * np.sin(2 * x - 1)
-#
-#     if choice == 2:
-#         return np.cos(2 * x - np.sin(-x))
-#
-#     if choice == 3:
-#         return (5 ** x) - 3
-#
-#     if choice == 4:
-#         return (3 ** (2 * x)) - 6
-
 def one_value(choice, x):
-    def f(x):
-        f = eval(functions[choice - 1])
-        return f
+    if choice == 1:
+        return (-3) * np.sin(2 * x - 1)
 
-    return f(x)
+    if choice == 2:
+        return np.cos(2 * x - np.sin(-x))
+
+    if choice == 3:
+        return (2 ** x) - 3
+
+    if choice == 4:
+        return (3 ** (2 * x)) - 6
+
+# def one_value(choice, x):
+#     def f(x):
+#         f = eval(functions[choice - 1])
+#         return f
+#
+#     return f(x)
 
 
 # funkcja okreslajaca zboir wartosci dla danych x-ów

@@ -1,4 +1,6 @@
 import numpy as np
+
+
 def polynomial_coefficients():
     stopien = int(input("Wprowadz stopien wielomianu: "))
     a = []
@@ -7,8 +9,3 @@ def polynomial_coefficients():
         print("to jest a dla x" + str(i) + ": " + str(a))
     return a, stopien
 
-def polynomial_to_string(coeff, stopien):
-    p1 = np.polynomial.Polynomial(coeff)
-    # for i in range(len(coeff)):
-    #     print(coeff[i])
-    print(p1)
