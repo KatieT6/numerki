@@ -6,9 +6,9 @@ import value_of_functions
 
 def change_value_type_based(func, a, b, coeff, x0):
     if 1 <= func <= 4:
-        funcx0 = value_of_Functions.one_value(func, x0)
-        funcA = value_of_Functions.one_value(func, a)
-        funcB = value_of_Functions.one_value(func, b)
+        funcx0 = value_of_functions.one_value(func, x0)
+        funcA = value_of_functions.one_value(func, a)
+        funcB = value_of_functions.one_value(func, b)
 
     elif func <= 0:
         funcx0 = horner.horner_scheme(coeff, len(coeff) - 1, x0)

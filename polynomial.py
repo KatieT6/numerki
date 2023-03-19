@@ -8,4 +8,3 @@ def polynomial_coefficients():
         a.append(int(input("Podaj współczynnik a" + str(i) + ": ")))
         print("to jest a dla x" + str(i) + ": " + str(a))
     return a, stopien
-
