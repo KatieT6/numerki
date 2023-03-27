@@ -10,7 +10,7 @@ def secant_method_iteration(choice, x0, x1, iteration, coeff, stopien):
 
     for i in range(0, iteration):
 
-        if 4 >= choice >= 1:
+        if 6 >= choice >= 1:
             fx0 = value_of_functions.one_value(choice, x0)
             fx1 = value_of_functions.one_value(choice, x1)
         elif choice == 0:
@@ -30,7 +30,7 @@ def secant_method_iteration(choice, x0, x1, iteration, coeff, stopien):
             print(f"It seems that the divider equals zero :(")
 
     fxi = 0
-    if 4 >= choice >= 1:
+    if 6 >= choice >= 1:
         fxi = value_of_functions.one_value(choice, xi)
     elif choice == 0:
         fxi = horner.horner_scheme(coeff, stopien, xi)
@@ -45,7 +45,7 @@ def secant_method_accuracy(choice, x0, x1, acc, coeff, stopien):
 
     xi = 0
 
-    if 4 >= choice >= 1:
+    if 6 >= choice >= 1:
 
         while np.abs(value_of_functions.one_value(choice, xi)) > acc:
             fx0 = value_of_functions.one_value(choice, x0)
