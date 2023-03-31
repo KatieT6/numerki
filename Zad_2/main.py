@@ -1,3 +1,6 @@
+import jordan_method
+
+
 def read_coefficients(filename):
     # Open the file and read the contents
     with open(filename, 'r') as f:
