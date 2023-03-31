@@ -12,7 +12,7 @@ def read_coefficients(filename):
         print(f'{i+1}:')
         print(section)
         print('')
-    choice = int(input('Choose a system: '))
+    choice = int(input('Choose a system: \n'))
 
     # Get the coefficients and constants for the chosen system
     coeffs_lines = sections[choice-1].split('\n')
@@ -31,3 +31,5 @@ def read_coefficients(filename):
 
 
 A, b = read_coefficients('data.txt')
+
+print(jordan_method.gauss_jordan_method(A, b))
