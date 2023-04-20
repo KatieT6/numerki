@@ -130,7 +130,7 @@ match user_input:
 
     case 2:
         print("Trygonometryczna")
-        type_of_func = int(input("Wybierz rodzaj: \n 1. y =    \n 2. y = cos(2*x-sin(-x))\n"))
+        type_of_func = int(input("Wybierz rodzaj: \n 1. y = -3*sin(2*x-1)  \n 2. y = cos(2*x-sin(-x))\n"))
         print_function(type_of_func, -20, 20, 0, 0)
         x1, x2 = _range_(type_of_func, 0, 0)
         xyb, xys = root_method(type_of_func, x1, x2, 0, 0)
