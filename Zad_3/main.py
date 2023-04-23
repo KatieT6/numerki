@@ -18,9 +18,7 @@ match user_input:
     case 1:
         type_of_func = 1
     case 2:
-        print("Wielomian")
-        type_of_func = int(input("Wybierz rodzaj: \n 1. y = - interpolacyjny    \n 2. y = - interpolowany\n"))
-
+        type_of_func = 2
     case 3:
         type_of_func = 3
     case 4:
