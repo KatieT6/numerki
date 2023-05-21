@@ -17,8 +17,6 @@ def one_value(choice, x):
     if choice == 5:
         return np.abs(x)
 
-    if choice == 6:
-        return np.sin(x - 2) * x ** 2 - 3 * x
 
 def value_of_poly(coeff, x, stopien):
     f = []
