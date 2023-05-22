@@ -1,7 +1,7 @@
 from math import sin
 
 from AbstractBaseFunction import AbstractBaseFunction
-from Exponentation import NumericType
+from horner_exponentation import NumericType
 
 class Trigonometric(AbstractBaseFunction):
     """

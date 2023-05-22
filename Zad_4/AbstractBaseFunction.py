@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from Exponentation import NumericType
+from horner_exponentation import NumericType
 
 
 
