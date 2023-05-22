@@ -1,7 +1,7 @@
 from typing import List
 
 from AbstractBaseFunction import AbstractBaseFunction
-from utils import NumericType
+from Exponentation import NumericType
 
 
 class Nested(AbstractBaseFunction):

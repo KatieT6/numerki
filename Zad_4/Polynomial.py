@@ -2,7 +2,7 @@ from horner import horner_scheme
 from typing import List
 
 from AbstractBaseFunction import AbstractBaseFunction
-from utils import *
+from Exponentation import NumericType
 
 
 class Polynomial(AbstractBaseFunction):

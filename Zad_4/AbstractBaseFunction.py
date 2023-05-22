@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from utils import NumericType
+from Exponentation import NumericType
 
 
 
