@@ -1,5 +1,5 @@
 from AbstractBaseFunction import AbstractBaseFunction
-from Exponentation import exponentation, NumericType
+from horner_exponentation import NumericType, quick_power
 
 
 class Exponential(AbstractBaseFunction):
@@ -13,6 +13,6 @@ class Exponential(AbstractBaseFunction):
 
     def __call__(self, argument: NumericType) -> NumericType:
         if argument is int:
-            return exponentation(self.A, argument)
+            return quick_power(self.A, argument)
 
         return self.A ** argument
