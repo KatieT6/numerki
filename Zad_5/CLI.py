@@ -46,11 +46,11 @@ def prompt_main():
 
 def prompt_function():
     print("dostepne funkcje: ")
-    print("1. f(x) = x+1")
+    print("1. f(x) = x+4")
     print("2. f(x) = 0.3 * cos(x)")
     print("3. f(x) = 3 * (0.3cos(x))^3 + 2 * (0.3cos(x))^2 + 0.3cos(x) + 4")
     print("4. f(x) = 2x^2 + x - 3 + 0.6 * sin(0.2 * x + 0.3)")
-    print("5. f(x) = 2 * | 5x + 8 |")
+    print("5. f(x) = 1 * | 5x + 8 |")
     ch = input("Wybor: ")
     print("================")
 
